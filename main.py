@@ -1,31 +1,35 @@
-import ctypes
 import sys
-from menus.clean import cleanMenu
-from menus.optimization import optimizationMenu
-from menus.tweaks import tweaksMenu
-def is_admin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
 
-if not is_admin():
-    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
-    sys.exit()
-else:
-    print("Скрипт запущен с правами администратора!")
+from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtCore import Slot
 
-while True:  # Бесконечный цикл для меню
-    a = input('Выберите пункт:\n1. Очистка\n2. Оптимизация\n3. Твики\n4. Выход\n')  # Добавил пункт для выхода
-    
-    if a == '1':
-        cleanMenu()
-    elif a == '2':
-        optimizationMenu()
-    elif a == '3':
-        tweaksMenu()
-    elif a == '4':  # Добавил условие для выхода из программы
-        print("Выход из программы...")
-        break  # Выход из цикла
-    else:
-        print("Неверный выбор, попробуйте еще раз!")
+from desing import Ui_MainWindow
+
+class ExpenseTracker(QMainWindow):
+    def __init__(self):
+        super(ExpenseTracker, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.ui.tabButton1.clicked.connect(self.switchToFifth)
+        self.ui.tabButton2.clicked.connect(self.switchToThird)
+        self.ui.tabButton3.clicked.connect(self.switchToSecond)
+        self.ui.tabButton4.clicked.connect(self.switchToFirst)
+        self.ui.tabButton5.clicked.connect(self.switchToFourth)
+    @Slot()
+    def switchToFirst(self):
+        self.ui.tabWidget.setCurrentIndex(0)
+    def switchToSecond(self):
+        self.ui.tabWidget.setCurrentIndex(1)
+    def switchToThird(self):
+        self.ui.tabWidget.setCurrentIndex(2)
+    def switchToFourth(self):
+        self.ui.tabWidget.setCurrentIndex(3)
+    def switchToFifth(self):
+        self.ui.tabWidget.setCurrentIndex(4)
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = ExpenseTracker()
+    window.show()
+
+    sys.exit(app.exec())
