@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>864</width>
+    <width>898</width>
     <height>637</height>
    </rect>
   </property>
@@ -20,23 +20,37 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: black;</string>
+   <string notr="true">/* Gradient Background for PySide6 */
+QMainWindow {
+  background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                              stop: 0 #b200ff, stop: 0.5 #0500ff, stop: 1 #ff0000);
+  background-size: 180% 180%;
+  animation: gradient-animation 6s ease infinite;
+}
+
+/* Keyframe Animation */
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>112</x>
-      <y>-31</y>
-      <width>751</width>
-      <height>671</height>
+      <x>100</x>
+      <y>-30</y>
+      <width>811</width>
+      <height>681</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: transparent;
+border: 0px;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <property name="styleSheet">
@@ -48,7 +62,7 @@
      <widget class="QWidget" name="widget_5" native="true">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>50</x>
         <y>130</y>
         <width>671</width>
         <height>401</height>
@@ -83,44 +97,6 @@ background-color: transparent;</string>
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="widget_6" native="true">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>550</y>
-        <width>671</width>
-        <height>79</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgba(255, 255, 255, 0.5);
-border-radius: 12px;</string>
-      </property>
-      <widget class="QLabel" name="label_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>601</width>
-         <height>39</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>18</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: white;
-background-color: transparent;</string>
-       </property>
-       <property name="text">
-        <string>Число выбранных вами функций: </string>
-       </property>
-      </widget>
-     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -129,7 +105,7 @@ background-color: transparent;</string>
      <widget class="QWidget" name="widget_4" native="true">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>50</x>
         <y>130</y>
         <width>671</width>
         <height>401</height>
@@ -344,7 +320,7 @@ QCheckBox {
      <widget class="QWidget" name="widget_3" native="true">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>50</x>
         <y>130</y>
         <width>671</width>
         <height>401</height>
@@ -419,7 +395,7 @@ QCheckBox {
      <widget class="QWidget" name="widget_2" native="true">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>50</x>
         <y>130</y>
         <width>671</width>
         <height>401</height>
@@ -643,8 +619,10 @@ QCheckBox {
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(255, 255, 255, 0.3);
-border-radius: 12px;</string>
+     <string notr="true">QWidget{
+background-color: rgba(255, 255, 255, 0.3);
+border-radius: 12px;
+}</string>
     </property>
     <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
@@ -875,42 +853,81 @@ color: white;</string>
      <string>Запустить</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QWidget" name="widget_6" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>91</width>
-      <height>91</height>
+      <x>150</x>
+      <y>540</y>
+      <width>671</width>
+      <height>79</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Arial</family>
-      <pointsize>12</pointsize>
-      <bold>false</bold>
-     </font>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0.5);
+border-radius: 12px;</string>
     </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>601</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+background-color: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Число выбранных вами функций: </string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_7" native="true">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>30</y>
+      <width>671</width>
+      <height>79</height>
+     </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: transparent;
-color: white;</string>
+     <string notr="true">background-color: rgba(255, 255, 255, 0.5);
+border-radius: 12px;</string>
     </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/logo/C:/Users/alexx/Downloads/Component 8.png</normaloff>:/logo/C:/Users/alexx/Downloads/Component 8.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>144</width>
-      <height>144</height>
-     </size>
-    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>601</width>
+       <height>39</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>18</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white;
+background-color: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Crystal ➜ Home</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
