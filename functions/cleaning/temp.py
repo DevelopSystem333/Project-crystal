@@ -1,7 +1,7 @@
 import os
 import shutil
 
-def clean_directory(dir, ):
+def clean(dir):
     for item in os.listdir(dir):
         item_path = os.path.join(dir, item)
         try:

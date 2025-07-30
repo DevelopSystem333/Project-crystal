@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'designFCNyRy.ui'
+## Form generated from reading UI file 'designZdKVmG.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.1
 ##
@@ -19,12 +19,12 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QLabel, QMainWindow,
     QPushButton, QSizePolicy, QTabWidget, QVBoxLayout,
     QWidget)
 import icons
-count = 0
+count = 0;
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(898, 637)
+        MainWindow.resize(790, 637)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -56,7 +56,7 @@ class Ui_MainWindow(object):
         self.tab.setStyleSheet(u"")
         self.widget_5 = QWidget(self.tab)
         self.widget_5.setObjectName(u"widget_5")
-        self.widget_5.setGeometry(QRect(50, 130, 671, 401))
+        self.widget_5.setGeometry(QRect(10, 117, 671, 421))
         self.widget_5.setStyleSheet(u"background-color: rgba(255, 255, 255, 0.5);\n"
 "border-radius: 12px;")
         self.label = QLabel(self.widget_5)
@@ -74,12 +74,12 @@ class Ui_MainWindow(object):
         self.tab_2.setObjectName(u"tab_2")
         self.widget_4 = QWidget(self.tab_2)
         self.widget_4.setObjectName(u"widget_4")
-        self.widget_4.setGeometry(QRect(50, 130, 671, 401))
+        self.widget_4.setGeometry(QRect(10, 117, 671, 421))
         self.widget_4.setStyleSheet(u"background-color: rgba(255, 255, 255, 0.3);\n"
 "border-radius: 12px;")
         self.verticalLayoutWidget_2 = QWidget(self.widget_4)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(0, 0, 671, 401))
+        self.verticalLayoutWidget_2.setGeometry(QRect(0, 0, 671, 421))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -192,12 +192,12 @@ class Ui_MainWindow(object):
         self.tab_4.setObjectName(u"tab_4")
         self.widget_3 = QWidget(self.tab_4)
         self.widget_3.setObjectName(u"widget_3")
-        self.widget_3.setGeometry(QRect(50, 130, 671, 401))
+        self.widget_3.setGeometry(QRect(10, 117, 671, 421))
         self.widget_3.setStyleSheet(u"background-color: rgba(255, 255, 255, 0.3);\n"
 "border-radius: 12px;")
         self.verticalLayoutWidget_5 = QWidget(self.widget_3)
         self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
-        self.verticalLayoutWidget_5.setGeometry(QRect(0, 0, 671, 401))
+        self.verticalLayoutWidget_5.setGeometry(QRect(0, 0, 671, 421))
         self.verticalLayout_5 = QVBoxLayout(self.verticalLayoutWidget_5)
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
@@ -227,12 +227,12 @@ class Ui_MainWindow(object):
         self.tab_3.setObjectName(u"tab_3")
         self.widget_2 = QWidget(self.tab_3)
         self.widget_2.setObjectName(u"widget_2")
-        self.widget_2.setGeometry(QRect(50, 130, 671, 401))
+        self.widget_2.setGeometry(QRect(10, 117, 671, 421))
         self.widget_2.setStyleSheet(u"background-color: rgba(255, 255, 255, 0.3);\n"
 "border-radius: 12px;")
         self.verticalLayoutWidget_3 = QWidget(self.widget_2)
         self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
-        self.verticalLayoutWidget_3.setGeometry(QRect(0, 0, 671, 401))
+        self.verticalLayoutWidget_3.setGeometry(QRect(0, 0, 671, 421))
         self.verticalLayout_3 = QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -439,18 +439,18 @@ class Ui_MainWindow(object):
 "color: white;")
         self.widget_6 = QWidget(self.centralwidget)
         self.widget_6.setObjectName(u"widget_6")
-        self.widget_6.setGeometry(QRect(150, 540, 671, 79))
+        self.widget_6.setGeometry(QRect(110, 540, 671, 91))
         self.widget_6.setStyleSheet(u"background-color: rgba(255, 255, 255, 0.5);\n"
 "border-radius: 12px;")
         self.label_2 = QLabel(self.widget_6)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(10, 20, 601, 39))
+        self.label_2.setGeometry(QRect(10, 30, 601, 39))
         self.label_2.setFont(font)
         self.label_2.setStyleSheet(u"color: white;\n"
 "background-color: transparent;")
         self.widget_7 = QWidget(self.centralwidget)
         self.widget_7.setObjectName(u"widget_7")
-        self.widget_7.setGeometry(QRect(150, 30, 671, 79))
+        self.widget_7.setGeometry(QRect(110, 14, 671, 84))
         self.widget_7.setStyleSheet(u"background-color: rgba(255, 255, 255, 0.5);\n"
 "border-radius: 12px;")
         self.label_3 = QLabel(self.widget_7)
@@ -459,11 +459,19 @@ class Ui_MainWindow(object):
         self.label_3.setFont(font)
         self.label_3.setStyleSheet(u"color: white;\n"
 "background-color: transparent;")
+        self.pushButton_2 = QPushButton(self.centralwidget)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setGeometry(QRect(10, 10, 91, 91))
+        self.pushButton_2.setFont(font3)
+        self.pushButton_2.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.pushButton_2.setStyleSheet(u"background-color: rgba(255, 255, 255, 0.5);\n"
+"border-radius: 12px;\n"
+"color: white;")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -496,5 +504,6 @@ class Ui_MainWindow(object):
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", f"\u0427\u0438\u0441\u043b\u043e \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0445 \u0432\u0430\u043c\u0438 \u0444\u0443\u043d\u043a\u0446\u0438\u0439: {count}", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Crystal \u279c Home", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043a\u0440\u0438\u043f\u0442\u044b", None))
     # retranslateUi
 
