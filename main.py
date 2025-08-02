@@ -53,8 +53,7 @@ class ExpenseTracker(QMainWindow):
         
         # Привязываем кнопку для выполнения всех выбранных функций
         self.ui.pushButton.clicked.connect(self.execute_functions)
-
-
+            
     def check_state(self, status):
         if status == Qt.CheckState.Checked:
             if self.sender() == self.ui.checkBox:
@@ -65,7 +64,7 @@ class ExpenseTracker(QMainWindow):
                 self.function_queue.append(lambda: clean(temp_with_percent))
 
             self.count += 1
-            self.ui.label_2.setText(f"Число выбранных вами функций: {self.count}")
+            self.ui.label_2.setText(f"{self.count}")
         
         elif status == Qt.CheckState.Unchecked and self.count > 0:
             # Убираем функцию из очереди, если чекбокс снят
@@ -76,7 +75,7 @@ class ExpenseTracker(QMainWindow):
             elif self.sender() == self.ui.checkBox_4:
                 self.function_queue.remove(disable_cortana)
             elif self.sender() == self.ui.checkBox_5:
-                self.function_queue.remove(performance_mode)
+                self.function_queue.remove(lambda: clean(temp_with_percent))
             elif self.sender() == self.ui.checkBox_6:
                 self.function_queue.remove(disable_windows_updates)
             elif self.sender() == self.ui.checkBox_7:
@@ -85,7 +84,7 @@ class ExpenseTracker(QMainWindow):
                 self.function_queue.remove(restore_win10_context_menu)
             # Обновляем отображение количества выбранных функций
             self.count -= 1
-            self.ui.label_2.setText(f"Число выбранных вами функций: {self.count}")
+            self.ui.label_2.setText(f"{self.count}")
 
     @Slot()
     def switchToFirst(self):
@@ -106,8 +105,7 @@ class ExpenseTracker(QMainWindow):
 
     def switchToFifth(self):
         self.ui.tabWidget.setCurrentIndex(4)
-        self.ui.label_3.setText("Crystal ➜ Personalize")
-
+        self.ui.label_3.setText("Crystal ➜ Personalize") 
     @Slot()
     def execute_functions(self):
         # Выполняем все функции из очереди

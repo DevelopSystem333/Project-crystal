@@ -1,0 +1,19 @@
+{
+  "apps": {
+    "First": {
+      "title": "Chrome",
+      "logoLink": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg",
+      "downloadLink": "https://www.google.com/chrome/next-steps.html?statcb=1&installdataindex=empty&defaultbrowser=0#"
+    },
+    "Second": {
+      "title": "Telegram",
+      "logoLink": "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg",
+      "downloadLink": "https://telegram.org/dl/desktop/win64"
+    },
+    "Third": {
+      "title": "VSCode",
+      "logoLink": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg",
+      "downloadLink": "https://code.visualstudio.com/Download#"
+    }
+  }
+}

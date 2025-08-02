@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>898</width>
+    <width>790</width>
     <height>637</height>
    </rect>
   </property>
@@ -105,7 +105,7 @@ background-color: transparent;</string>
      <widget class="QWidget" name="widget_4" native="true">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>10</x>
         <y>117</y>
         <width>671</width>
         <height>421</height>
@@ -607,6 +607,20 @@ QCheckBox {
      <attribute name="title">
       <string/>
      </attribute>
+     <widget class="QWidget" name="widget_8" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>117</y>
+        <width>671</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0.3);
+border-radius: 12px;</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QWidget" name="widget" native="true">
@@ -663,7 +677,7 @@ border: none;</string>
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="icons.qrc">
+         <iconset>
           <normaloff>:/white/C:/Users/alexx/Downloads/icons8-главная-32.png</normaloff>:/white/C:/Users/alexx/Downloads/icons8-главная-32.png</iconset>
         </property>
         <property name="iconSize">
@@ -700,7 +714,7 @@ border: none;</string>
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="icons.qrc">
+         <iconset>
           <normaloff>:/white/C:/Users/alexx/Downloads/icons8-мусор-48.png</normaloff>:/white/C:/Users/alexx/Downloads/icons8-мусор-48.png</iconset>
         </property>
         <property name="iconSize">
@@ -737,7 +751,7 @@ border: none;</string>
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="icons.qrc">
+         <iconset>
           <normaloff>:/white/C:/Users/alexx/Downloads/icons8-приборная-панель-50.png</normaloff>:/white/C:/Users/alexx/Downloads/icons8-приборная-панель-50.png</iconset>
         </property>
         <property name="iconSize">
@@ -774,7 +788,7 @@ border: none;</string>
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="icons.qrc">
+         <iconset>
           <normaloff>:/white/C:/Users/alexx/Downloads/icons8-external-setting-tweak-web-design-and-development-outline-design-circle-32.png</normaloff>:/white/C:/Users/alexx/Downloads/icons8-external-setting-tweak-web-design-and-development-outline-design-circle-32.png</iconset>
         </property>
         <property name="iconSize">
@@ -811,7 +825,7 @@ border: none;</string>
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="icons.qrc">
+         <iconset>
           <normaloff>:/white/C:/Users/alexx/Downloads/icons8-palette-64.png</normaloff>:/white/C:/Users/alexx/Downloads/icons8-palette-64.png</iconset>
         </property>
         <property name="iconSize">
@@ -852,44 +866,6 @@ color: white;</string>
     <property name="text">
      <string>Запустить</string>
     </property>
-   </widget>
-   <widget class="QWidget" name="widget_6" native="true">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>540</y>
-      <width>671</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgba(255, 255, 255, 0.5);
-border-radius: 12px;</string>
-    </property>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>601</width>
-       <height>39</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>18</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: white;
-background-color: transparent;</string>
-     </property>
-     <property name="text">
-      <string>Число выбранных вами функций: </string>
-     </property>
-    </widget>
    </widget>
    <widget class="QWidget" name="widget_7" native="true">
     <property name="geometry">
@@ -955,6 +931,89 @@ color: white;</string>
     </property>
     <property name="text">
      <string>Скрипты</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>545</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+background-color: transparent;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>540</y>
+      <width>91</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0.5);
+border-radius: 12px;
+color: white;</string>
+    </property>
+    <property name="text">
+     <string>Логи</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>540</y>
+      <width>571</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0.5);
+border-radius: 12px;
+color: white;</string>
+    </property>
+    <property name="text">
+     <string>Менеджер приложений</string>
     </property>
    </widget>
   </widget>
