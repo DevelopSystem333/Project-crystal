@@ -1,4 +1,5 @@
 import winreg
+from Logs.log import clog
 
 def disable_xbox_game_bar():
     try:
@@ -11,6 +12,6 @@ def disable_xbox_game_bar():
         winreg.SetValueEx(key, "AppCaptureEnabled", 0, winreg.REG_DWORD, 0)
         winreg.SetValueEx(key, "GameDVR_Enabled", 0, winreg.REG_DWORD, 0)
         winreg.CloseKey(key)
-        print("Xbox Game Bar отключён в реестре.")
+        clog("Xbox Game Bar отключён в реестре.")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        clog(f"Ошибка: {e}")

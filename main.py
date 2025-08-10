@@ -12,21 +12,29 @@ from functions.optimization.perfomance import performance_mode
 from functions.optimization.update import disable_windows_updates
 from functions.optimization.xboxGB import disable_xbox_game_bar
 from functions.tweaks.context_menu import restore_win10_context_menu
+from functions.personalize.switchTheme import switchThemeToLight, switchThemeToDark
 import os
 
+from Logs.log import clog, set_main_window
+from Parsing.jsonParser import add7zipToScript, addFirefoxToScript, addVSCodeToScript, executeScript
+
 # Пути для очистки
-temp_default = 'C:/Windows/temp'
-temp_with_percent = os.environ.get('TEMP')
+temp_default_path = 'C:/Windows/temp'
+temp_with_percent_path = os.environ.get('TEMP')
 yandex_cache_path = os.path.join(os.environ['LOCALAPPDATA'], 'Yandex', 'YandexBrowser', 'User Data', 'Default', 'Cache')
 chrome_cache_path = os.path.join(os.environ['LOCALAPPDATA'], 'Google', 'Chrome', 'User Data', 'Default', 'Cache')
+update_windows_cache_path = 'C:/Windows/SoftwareDistribution/Download'
+prefetch_path = 'C:/Windows/Prefetch'
 
 class ExpenseTracker(QMainWindow):
     def __init__(self):
         super(ExpenseTracker, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        set_main_window(self)
         self.setFixedSize(QSize(790, 637))
         self.setWindowTitle("Crystal")
+        self.ui.textEdit.setReadOnly(True)
         self.count = count
         
         # Очередь для выбранных функций
@@ -38,7 +46,8 @@ class ExpenseTracker(QMainWindow):
         self.ui.tabButton3.clicked.connect(self.switchToSecond)
         self.ui.tabButton4.clicked.connect(self.switchToFirst)
         self.ui.tabButton5.clicked.connect(self.switchToFourth)
-
+        self.ui.pushButton_3.clicked.connect(self.switchToSixth)
+        self.ui.pushButton_4.clicked.connect(self.switchToSeventh)
         # Привязываем чекбоксы
         self.ui.checkBox_2.checkStateChanged.connect(self.check_state)
         self.ui.checkBox_3.checkStateChanged.connect(self.check_state)
@@ -53,35 +62,71 @@ class ExpenseTracker(QMainWindow):
         
         # Привязываем кнопку для выполнения всех выбранных функций
         self.ui.pushButton.clicked.connect(self.execute_functions)
-            
+        self.ui.pushButton_8.clicked.connect(executeScript)
+
+        self.ui.add7zip.clicked.connect(add7zipToScript)
+        self.ui.addFirefox.clicked.connect(addFirefoxToScript)
+        self.ui.addVSCode.clicked.connect(addVSCodeToScript)
+
+        self.ui.darkTheme.clicked.connect(lambda: switchThemeToDark(self))
+        self.ui.lightTheme.clicked.connect(lambda: switchThemeToLight(self))
+
     def check_state(self, status):
         if status == Qt.CheckState.Checked:
             if self.sender() == self.ui.checkBox:
-                self.function_queue.append(lambda: clean(temp_default))
+                func = lambda: clean(temp_default_path)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
+            elif self.sender() == self.ui.checkBox_2:
+                func = lambda: clean(update_windows_cache_path)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
             elif self.sender() == self.ui.checkBox_3:
-                self.function_queue.append(lambda: clean(yandex_cache_path))
+                func = lambda: clean(yandex_cache_path)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
+            elif self.sender() == self.ui.checkBox_4:
+                func = lambda: clean(prefetch_path)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
             elif self.sender() == self.ui.checkBox_5:
-                self.function_queue.append(lambda: clean(temp_with_percent))
+                func = lambda: clean(temp_with_percent_path)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
+            elif self.sender() == self.ui.checkBox_6:
+                func = lambda: clean(disable_xbox_game_bar)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
+            elif self.sender() == self.ui.checkBox_7:
+                func = lambda: clean(disable_windows_updates)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
+            elif self.sender() == self.ui.checkBox_8:
+                func = lambda: clean(disable_cortana)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
+            elif self.sender() == self.ui.checkBox_9:
+                func = lambda: clean(disable_edge)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
+            elif self.sender() == self.ui.checkBox_10:
+                func = lambda: clean(performance_mode)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
+            elif self.sender() == self.ui.checkBox_12:
+                func = lambda: clean(restore_win10_context_menu)
+                self.function_queue.append(func)
+                self.sender().setProperty("stored_func", func)
 
             self.count += 1
             self.ui.label_2.setText(f"{self.count}")
         
         elif status == Qt.CheckState.Unchecked and self.count > 0:
-            # Убираем функцию из очереди, если чекбокс снят
-            if self.sender() == self.ui.checkBox_2:
-                self.function_queue.remove(clean)
-            elif self.sender() == self.ui.checkBox_3:
-                self.function_queue.remove(disable_edge)
-            elif self.sender() == self.ui.checkBox_4:
-                self.function_queue.remove(disable_cortana)
-            elif self.sender() == self.ui.checkBox_5:
-                self.function_queue.remove(lambda: clean(temp_with_percent))
-            elif self.sender() == self.ui.checkBox_6:
-                self.function_queue.remove(disable_windows_updates)
-            elif self.sender() == self.ui.checkBox_7:
-                self.function_queue.remove(disable_xbox_game_bar)
-            elif self.sender() == self.ui.checkBox_8:
-                self.function_queue.remove(restore_win10_context_menu)
+            # Убираем функцию из очереди, используя сохранённую функцию
+            stored_func = self.sender().property("stored_func")
+            if stored_func and stored_func in self.function_queue:
+                self.function_queue.remove(stored_func)
+            
             # Обновляем отображение количества выбранных функций
             self.count -= 1
             self.ui.label_2.setText(f"{self.count}")
@@ -89,23 +134,24 @@ class ExpenseTracker(QMainWindow):
     @Slot()
     def switchToFirst(self):
         self.ui.tabWidget.setCurrentIndex(0)
-        self.ui.label_3.setText("Crystal ➜ Home")
 
     def switchToSecond(self):
         self.ui.tabWidget.setCurrentIndex(1)
-        self.ui.label_3.setText("Crystal ➜ Clean")
 
     def switchToThird(self):
         self.ui.tabWidget.setCurrentIndex(2)
-        self.ui.label_3.setText("Crystal ➜ Optimization")
 
     def switchToFourth(self):
         self.ui.tabWidget.setCurrentIndex(3)
-        self.ui.label_3.setText("Crystal ➜ Tweaks")
 
     def switchToFifth(self):
         self.ui.tabWidget.setCurrentIndex(4)
-        self.ui.label_3.setText("Crystal ➜ Personalize") 
+
+    def switchToSixth(self):
+        self.ui.tabWidget.setCurrentIndex(5)
+
+    def switchToSeventh(self):
+        self.ui.tabWidget.setCurrentIndex(6)
     @Slot()
     def execute_functions(self):
         # Выполняем все функции из очереди
@@ -113,13 +159,14 @@ class ExpenseTracker(QMainWindow):
             try:
                 func()
             except Exception as e:
-                print(f"Ошибка при выполнении {func.__name__}: {e}")
+                clog(f"Ошибка при выполнении {func.__name__}: {e}")
         
         # Очищаем очередь после выполнения
         self.function_queue.clear()
         self.count = 0  # Сбрасываем счетчик
-        self.ui.label_2.setText(f"Число выбранных вами функций: {self.count}")
-        print("Все функции выполнены!")
+        self.ui.label_2.setText(f"{self.count}")
+        
+        clog("Все функции выполнены!")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

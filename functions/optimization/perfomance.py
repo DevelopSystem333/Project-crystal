@@ -1,4 +1,5 @@
 import winreg
+from Logs.log import clog
 
 def performance_mode():
     try:
@@ -15,6 +16,6 @@ def performance_mode():
         winreg.SetValueEx(key, "UserPreferencesMask", 0, winreg.REG_BINARY, b'\x90\x12\x01\x80\x10\x00\x00\x00')
         winreg.CloseKey(key)
 
-        print("Настройки применены. Возможно, потребуется перезагрузка.")
+        clog("Настройки применены. Возможно, потребуется перезагрузка.")
     except Exception as e:
-        print(f'Ошибка: {e}')
+        clog(f'Ошибка: {e}')

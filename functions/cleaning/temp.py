@@ -1,5 +1,6 @@
 import os
 import shutil
+from Logs.log import clog
 
 def clean(dir):
     for item in os.listdir(dir):
@@ -10,4 +11,4 @@ def clean(dir):
             elif os.path.isdir(item_path):
                 shutil.rmtree(item_path)
         except Exception as e:
-            print(f'Ошибка при удалении {item_path} | {e}')
+            clog(f'Ошибка при удалении {e}')

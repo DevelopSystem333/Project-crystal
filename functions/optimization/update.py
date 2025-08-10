@@ -1,4 +1,5 @@
 import winreg
+from Logs.log import clog
 
 def disable_windows_updates():
     try:
@@ -17,4 +18,4 @@ def disable_windows_updates():
     winreg.SetValueEx(key, "NoAutoUpdate", 0, winreg.REG_DWORD, 1)
     winreg.SetValueEx(key, "AUOptions", 0, winreg.REG_DWORD, 2)  # 2 - Notify before download
     winreg.CloseKey(key)
-    print("Автоматические обновления Windows отключены.")
+    clog("Автоматические обновления Windows отключены.")

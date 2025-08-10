@@ -1,4 +1,5 @@
 import winreg
+from Logs.log import clog
 
 def disable_cortana():
     try:
@@ -12,7 +13,7 @@ def disable_cortana():
         # Устанавливаем значение для отключения Cortana
         winreg.SetValueEx(key, "AllowCortana", 0, winreg.REG_DWORD, 0)
         winreg.CloseKey(key)
-        print("Cortana отключена через реестр.")
+        clog("Cortana отключена через реестр.")
     except FileNotFoundError:
         # Если ключа нет, создаём его
         try:
@@ -22,8 +23,8 @@ def disable_cortana():
             )
             winreg.SetValueEx(key, "AllowCortana", 0, winreg.REG_DWORD, 0)
             winreg.CloseKey(key)
-            print("Cortana отключена (ключ реестра создан).")
+            clog("Cortana отключена (ключ реестра создан).")
         except Exception as e:
-            print(f"Ошибка при создании ключа: {e}")
+            clog(f"Ошибка при создании ключа: {e}")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        clog(f"Ошибка: {e}")

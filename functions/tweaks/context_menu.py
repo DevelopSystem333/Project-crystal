@@ -1,4 +1,5 @@
 import winreg
+from Logs.log import clog
 
 def restore_win10_context_menu():
     try:
@@ -20,4 +21,4 @@ def restore_win10_context_menu():
     winreg.SetValueEx(key, "", 0, winreg.REG_SZ, "")
     winreg.CloseKey(key)
     
-    print("Контекстное меню Windows 10 восстановлено. Перезапустите проводник или перезагрузите ПК.")
+    clog("Контекстное меню Windows 10 возвращено.")

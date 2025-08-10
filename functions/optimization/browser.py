@@ -1,4 +1,5 @@
 import winreg
+from Logs.log import clog
 
 def disable_edge():
     try:
@@ -10,7 +11,7 @@ def disable_edge():
         )
         winreg.SetValueEx(key, "EdgeEnabled", 0, winreg.REG_DWORD, 0)
         winreg.CloseKey(key)
-        print("Microsoft Edge отключён в реестре.")
+        clog("Microsoft Edge отключён в реестре.")
     except FileNotFoundError:
         # Если ключа нет, создаём его
         try:
@@ -20,8 +21,8 @@ def disable_edge():
             )
             winreg.SetValueEx(key, "EdgeEnabled", 0, winreg.REG_DWORD, 0)
             winreg.CloseKey(key)
-            print("Microsoft Edge заблокирован (ключ реестра создан).")
+            clog("Microsoft Edge заблокирован (ключ реестра создан).")
         except Exception as e:
-            print(f"Ошибка: {e}")
+            clog(f"Ошибка: {e}")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        clog(f"Ошибка: {e}")
