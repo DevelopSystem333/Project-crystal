@@ -22,9 +22,10 @@ def _get_common_elements(ui):
         ui.widget_3,
         ui.widget_4,
         ui.widget_5,
+        ui.widget_6,
         ui.widget_8,
         ui.widget_9,
-        ui.widget_10
+        ui.widget_10,
     ]
 
 def _get_accent_elements(ui):
@@ -34,7 +35,11 @@ def _get_accent_elements(ui):
         ui.addFirefox,
         ui.addVSCode,
         ui.darkTheme,
-        ui.lightTheme
+        ui.lightTheme,
+        ui.widget_7,
+        ui.widget_11,
+        ui.widget_12,
+        ui.widget_13,
     ]
 
 def switchThemeToLight(window):

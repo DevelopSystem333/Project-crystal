@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import Slot
 from PySide6.QtCore import Qt
 from PySide6.QtCore import QSize
+from PySide6.QtGui import QIcon
 from desing import Ui_MainWindow
 from desing import count
 from functions.cleaning.temp import clean
@@ -14,10 +15,12 @@ from functions.optimization.xboxGB import disable_xbox_game_bar
 from functions.tweaks.context_menu import restore_win10_context_menu
 from functions.personalize.switchTheme import switchThemeToLight, switchThemeToDark
 import os
+import platform
+import psutil
+import GPUtil
 
 from Logs.log import clog, set_main_window
 from Parsing.jsonParser import add7zipToScript, addFirefoxToScript, addVSCodeToScript, executeScript
-
 # Пути для очистки
 temp_default_path = 'C:/Windows/temp'
 temp_with_percent_path = os.environ.get('TEMP')
@@ -34,9 +37,11 @@ class ExpenseTracker(QMainWindow):
         set_main_window(self)
         self.setFixedSize(QSize(790, 637))
         self.setWindowTitle("Crystal")
+        icon = QIcon("icons/logo.png")
+        self.setWindowIcon(icon)
         self.ui.textEdit.setReadOnly(True)
         self.count = count
-        
+        self.display_system_info()
         # Очередь для выбранных функций
         self.function_queue = []
         
@@ -130,7 +135,57 @@ class ExpenseTracker(QMainWindow):
             # Обновляем отображение количества выбранных функций
             self.count -= 1
             self.ui.label_2.setText(f"{self.count}")
-
+    
+    def get_memory_usage(self):
+        memory = psutil.virtual_memory()
+        return (
+            f"Всего: {memory.total / (1024**3):.2f} ГБ\n"
+            f"Используется: {memory.used / (1024**3):.2f} ГБ\n"
+            f"Свободно: {memory.available / (1024**3):.2f} ГБ\n"
+            f"Процент использования: {memory.percent}%\n"
+        )
+    
+    def get_gpu_info(self):
+        gpus = GPUtil.getGPUs()
+        if not gpus:
+            return "Нет данных о GPU"
+            
+        gpu_info = []
+        for gpu in gpus:
+            gpu_info.append(
+                f"GPU: {gpu.name}\n"
+                f"Загрузка: {gpu.load * 100:.1f}%\n"
+                f"Память: {gpu.memoryUsed:.0f} / {gpu.memoryTotal:.0f} MB\n"
+            )
+        return "\n".join(gpu_info)
+    
+    def display_system_info(self):
+        system, version = platform.system(), platform.version()
+        cpu = platform.processor()
+        memory_info = self.get_memory_usage()
+        gpu_info = self.get_gpu_info()
+            
+        info_text_system = (
+            f"Система\n"
+            f"ОС: {system}\n"
+            f"Версия: {version}\n\n"
+        )
+        info_text_processor = (
+            f"Процессор\n"
+            f"{cpu}\n\n"
+        )
+        info_text_memory = (
+            f"Оперативная память\n"
+            f"{memory_info}\n"
+        )
+        info_text_gpu = (
+            f"Видеокарта\n"
+            f"{gpu_info}\n"
+        )
+        self.ui.textEdit_2.setPlainText(info_text_system)
+        self.ui.textEdit_3.setPlainText(info_text_memory)
+        self.ui.textEdit_4.setPlainText(info_text_processor)
+        self.ui.textEdit_5.setPlainText(info_text_gpu)
     @Slot()
     def switchToFirst(self):
         self.ui.tabWidget.setCurrentIndex(0)
